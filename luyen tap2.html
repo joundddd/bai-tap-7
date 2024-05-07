@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            width: 960px;
+            margin: 0px auto;
+        }
+        .sodau{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<button onclick="hienthi()" class="sodau">hien thi</button>
+<button onclick="themVao()" class="sodau">them</button>
+<div id="kq"></div>
+<script>
+    let list = ['don hang 1' , 'don hang 2', 'don hang 3'];
+function hienthi() {
+    let dem = '<h1>DANH SACH SAN PHAM</h1>';
+    dem += `<p>so luong san pham la: ${list.length}</p>`
+    for (let i = 0; i < list.length; i++) {
+        dem += `<h3>${list[i]}<button onclick="chinhsua(${i})">chinh sua</button> </h3>`
+    }
+    document.getElementById('kq').innerHTML =  dem + '<hr>'
+}
+function themVao() {
+    let them = '<input id="inp" ><button onclick="add()">them vao</button>'
+    document.getElementById('kq').innerHTML = them;
+}
+function add() {
+    list.push(document.getElementById('inp').value);
+    hienthi();
+}
+function chinhsua(inra) {
+    let com = `<input id="inp" value="${list[inra]}"> <button onclick="luu(${inra})">save</button>;`
+    document.getElementById('kq').innerHTML = com
+}
+function luu(inra) {
+list[inra] = document.getElementById('inp').value;
+hienthi()
+}
+</script>
+</body>
+</html>
